@@ -1,6 +1,7 @@
 import { MetadataProvider } from './metadata-provider.js';
 import { PublicationMetadata } from './types.js';
 
+/** Провайдер метаданих для ISBN через Open Library API */
 export class OpenLibraryProvider implements MetadataProvider {
   private readonly apiUrl: string;
 

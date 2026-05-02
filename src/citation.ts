@@ -3,6 +3,7 @@ import { PublicationMetadata } from './types.js';
 
 let idCounter = 0;
 
+/** Об'єкт цитати з метаданими, форматованим текстом та прив'язаним стилем */
 export class Citation {
   readonly id: string;
   readonly rawMetadata: PublicationMetadata;
@@ -18,20 +19,24 @@ export class Citation {
     this.createdAt = new Date();
   }
 
+  /** Переформатовує цитату у новому стилі та повертає оновлений текст */
   format(style: CitationStyle): string {
     this.style = style;
     this.formattedText = style.formatCitation(this.rawMetadata);
     return this.formattedText;
   }
 
+  /** Повертає поточний форматований текст цитати */
   getFormattedText(): string {
     return this.formattedText;
   }
 
+  /** Повертає поточний стиль цитування */
   getStyle(): CitationStyle {
     return this.style;
   }
 
+  /** Повертає форматований текст цитати для копіювання до буфера обміну */
   copyToClipboard(): string {
     return this.formattedText;
   }

@@ -4,6 +4,7 @@ export type StyleName = 'APA' | 'MLA' | 'Chicago';
 
 const VALID_STYLES: StyleName[] = ['APA', 'MLA', 'Chicago'];
 
+/** Стиль цитування (APA, MLA або Chicago) з логікою форматування метаданих */
 export class CitationStyle {
   readonly name: StyleName;
   readonly template: string;
@@ -16,6 +17,7 @@ export class CitationStyle {
     this.template = name;
   }
 
+  /** Форматує метадані публікації у рядок цитати відповідно до обраного стилю */
   formatCitation(metadata: PublicationMetadata): string {
     switch (this.name) {
       case 'APA':

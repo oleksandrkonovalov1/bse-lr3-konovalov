@@ -4,6 +4,7 @@ import { CitationStyle } from './citation-style.js';
 import { Citation } from './citation.js';
 import { CitationGenerator } from './citation-generator.js';
 
+/** Зареєстрований користувач із можливістю зберігати та переглядати історію цитат */
 export class RegisteredUser extends User {
   private savedCitations: Citation[] = [];
   private readonly generator: CitationGenerator;
@@ -13,10 +14,12 @@ export class RegisteredUser extends User {
     this.generator = generator;
   }
 
+  /** Повертає роль "registered" */
   getRole(): string {
     return 'registered';
   }
 
+  /** Генерує цитату за запитом та стилем через спільний генератор */
   async generateCitation(
     request: SearchRequest,
     style: CitationStyle,
@@ -24,6 +27,7 @@ export class RegisteredUser extends User {
     return this.generator.generate(request, style);
   }
 
+  /** Зберігає цитату до особистої бібліотеки; кидає помилку при дублікаті */
   saveCitation(citation: Citation): void {
     if (this.savedCitations.some((c) => c.id === citation.id)) {
       throw new Error(`Citation ${citation.id} already saved`);
@@ -31,10 +35,12 @@ export class RegisteredUser extends User {
     this.savedCitations.push(citation);
   }
 
+  /** Повертає копію списку збережених цитат користувача */
   getHistory(): Citation[] {
     return [...this.savedCitations];
   }
 
+  /** Перевіряє облікові дані користувача: email повинен збігатися, пароль — мінімум 8 символів */
   login(email: string, password: string): boolean {
     if (!email || !password) return false;
     return this.email === email && password.length >= 8;

@@ -1,9 +1,11 @@
+/** Тип ідентифікатора публікації */
 export enum IdentifierType {
   DOI = 'DOI',
   ISBN = 'ISBN',
   URL = 'URL',
 }
 
+/** Метадані публікації, отримані від провайдера */
 export interface PublicationMetadata {
   title: string;
   authors: string[];

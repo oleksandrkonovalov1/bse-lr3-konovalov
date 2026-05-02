@@ -4,6 +4,7 @@ import { CitationStyle } from './citation-style.js';
 import { Citation } from './citation.js';
 import { MetadataProvider } from './metadata-provider.js';
 
+/** Генератор цитат: валідація → маршрутизація до провайдера → форматування */
 export class CitationGenerator {
   private readonly providers: Map<IdentifierType, MetadataProvider>;
 
@@ -14,6 +15,7 @@ export class CitationGenerator {
     this.providers = providers;
   }
 
+  /** Валідує запит, отримує метадані від відповідного провайдера та повертає відформатовану цитату */
   async generate(
     request: SearchRequest,
     style: CitationStyle,
@@ -29,6 +31,7 @@ export class CitationGenerator {
     return new Citation(metadata, style);
   }
 
+  /** Повертає провайдер метаданих для заданого типу ідентифікатора або кидає помилку */
   resolveProvider(type: IdentifierType): MetadataProvider {
     const provider = this.providers.get(type);
     if (!provider) {

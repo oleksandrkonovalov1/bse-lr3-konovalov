@@ -1,6 +1,7 @@
 import { MetadataProvider } from './metadata-provider.js';
 import { PublicationMetadata } from './types.js';
 
+/** Провайдер метаданих для URL через HTTP-запит і парсинг HTML-заголовку */
 export class WebScraperProvider implements MetadataProvider {
   async fetchMetadata(url: string): Promise<PublicationMetadata> {
     try {

@@ -1,6 +1,7 @@
 import { MetadataProvider } from './metadata-provider.js';
 import { PublicationMetadata } from './types.js';
 
+/** Провайдер метаданих для DOI через Crossref API */
 export class CrossrefProvider implements MetadataProvider {
   private readonly apiUrl: string;
 

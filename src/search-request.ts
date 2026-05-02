@@ -1,5 +1,6 @@
 import { IdentifierType } from './types.js';
 
+/** Запит на пошук публікації за ідентифікатором (DOI, ISBN або URL) */
 export class SearchRequest {
   private readonly identifier: string;
   private readonly type: IdentifierType | null;
@@ -9,6 +10,7 @@ export class SearchRequest {
     this.type = this.detectType();
   }
 
+  /** Перевіряє коректність ідентифікатора відповідно до його типу */
   validate(): boolean {
     if (!this.identifier || !this.type) return false;
 
@@ -27,6 +29,7 @@ export class SearchRequest {
     }
   }
 
+  /** Повертає визначений тип ідентифікатора або кидає помилку, якщо тип не вдалось визначити */
   getType(): IdentifierType {
     if (!this.type) {
       throw new Error(`Cannot determine identifier type for: ${this.identifier}`);
@@ -34,6 +37,7 @@ export class SearchRequest {
     return this.type;
   }
 
+  /** Повертає нормалізований рядок ідентифікатора */
   getIdentifier(): string {
     return this.identifier;
   }
