@@ -37,7 +37,7 @@
 ## 3. Посилання на PR
 
 Pull Request з результатами Code Review:
-<https://github.com/oleksandrkonovalov1/bse-lr3-petrechenko/pull/1>
+<https://github.com/ruslanpetrechenko7/bse-lr3-petrechenko/pull/1>
 
 ---
 
