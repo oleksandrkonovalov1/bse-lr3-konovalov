@@ -1,10 +1,9 @@
 import type { CitationStyle } from "./citation-style.js";
 import type { PublicationMetadata } from "./types.js";
 
-let idCounter = 0;
-
 /** Об'єкт цитати з метаданими, форматованим текстом та прив'язаним стилем */
 export class Citation {
+	private static nextId = 0;
 	readonly id: string;
 	readonly rawMetadata: PublicationMetadata;
 	private formattedText: string;
@@ -12,7 +11,7 @@ export class Citation {
 	readonly createdAt: Date;
 
 	constructor(metadata: PublicationMetadata, style: CitationStyle) {
-		this.id = `cit-${++idCounter}`;
+		this.id = `cit-${++Citation.nextId}`;
 		this.rawMetadata = metadata;
 		this.style = style;
 		this.formattedText = style.formatCitation(metadata);
