@@ -1,43 +1,39 @@
-import { CitationStyle } from './citation-style.js';
-import { PublicationMetadata } from './types.js';
+import type { CitationStyle } from "./citation-style.js";
+import type { PublicationMetadata } from "./types.js";
 
 let idCounter = 0;
 
 /** Об'єкт цитати з метаданими, форматованим текстом та прив'язаним стилем */
 export class Citation {
-  readonly id: string;
-  readonly rawMetadata: PublicationMetadata;
-  private formattedText: string;
-  private style: CitationStyle;
-  readonly createdAt: Date;
+	readonly id: string;
+	readonly rawMetadata: PublicationMetadata;
+	private formattedText: string;
+	private style: CitationStyle;
+	readonly createdAt: Date;
 
-  constructor(metadata: PublicationMetadata, style: CitationStyle) {
-    this.id = `cit-${++idCounter}`;
-    this.rawMetadata = metadata;
-    this.style = style;
-    this.formattedText = style.formatCitation(metadata);
-    this.createdAt = new Date();
-  }
+	constructor(metadata: PublicationMetadata, style: CitationStyle) {
+		this.id = `cit-${++idCounter}`;
+		this.rawMetadata = metadata;
+		this.style = style;
+		this.formattedText = style.formatCitation(metadata);
+		this.createdAt = new Date();
+	}
 
-  /** Переформатовує цитату у новому стилі та повертає оновлений текст */
-  format(style: CitationStyle): string {
-    this.style = style;
-    this.formattedText = style.formatCitation(this.rawMetadata);
-    return this.formattedText;
-  }
+	/** Переформатовує цитату у новому стилі та повертає оновлений текст */
+	format(style: CitationStyle): string {
+		this.style = style;
+		this.formattedText = style.formatCitation(this.rawMetadata);
+		return this.formattedText;
+	}
 
-  /** Повертає поточний форматований текст цитати */
-  getFormattedText(): string {
-    return this.formattedText;
-  }
+	/** Повертає поточний форматований текст цитати */
+	getFormattedText(): string {
+		return this.formattedText;
+	}
 
-  /** Повертає поточний стиль цитування */
-  getStyle(): CitationStyle {
-    return this.style;
-  }
+	/** Повертає поточний стиль цитування */
+	getStyle(): CitationStyle {
+		return this.style;
+	}
 
-  /** Повертає форматований текст цитати для копіювання до буфера обміну */
-  copyToClipboard(): string {
-    return this.formattedText;
-  }
 }
