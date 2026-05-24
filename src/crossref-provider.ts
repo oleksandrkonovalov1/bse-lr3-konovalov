@@ -38,3 +38,9 @@ export class CrossrefProvider implements MetadataProvider {
     };
   }
 }
+
+// КОД-РЕВ'Ю: Петреченко Руслан (review-petrechenko)
+// Рядок: виклик fetch() у методі fetchMetadata()
+// Проблема: відсутній таймаут запиту — може зависнути назавжди при повільній мережі
+// Категорія: Robustness
+// Рекомендація: додати AbortController з таймаутом 5000мс

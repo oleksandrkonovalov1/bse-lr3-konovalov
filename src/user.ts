@@ -29,3 +29,9 @@ export abstract class User {
 		return this.email === email && password.length >= MIN_PASSWORD_LENGTH;
 	}
 }
+
+// КОД-РЕВ'Ю: Петреченко Руслан (review-petrechenko)
+// Рядок: метод login()
+// Проблема: пароль перевіряється лише за довжиною без хешування — ризик безпеки
+// Категорія: Security
+// Рекомендація: додати хешування паролю (bcrypt) або позначити як TODO для продакшну

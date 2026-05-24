@@ -41,3 +41,9 @@ export class RegisteredUser extends User {
 	}
 
 }
+
+// КОД-РЕВ'Ю: Петреченко Руслан (review-petrechenko)
+// Рядок: метод getHistory()
+// Проблема: повертає поверхневу копію масиву але об'єкти Citation залишаються мутабельними
+// Категорія: Defensive copy
+// Рекомендація: задокументувати обмеження або використати Object.freeze() для елементів
