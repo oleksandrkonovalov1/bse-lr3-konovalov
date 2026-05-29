@@ -105,3 +105,9 @@ export class CitationStyle {
     return parts.join(' ');
   }
 }
+
+// КОД-РЕВ'Ю: Петреченко Руслан (review-petrechenko)
+// Рядок: readonly template
+// Проблема: поле template оголошено але є лише дублікатом поля name — мертвий код
+// Категорія: Dead code
+// Рекомендація: видалити поле template або використати його як реальний шаблон форматування
